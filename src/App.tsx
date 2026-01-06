@@ -1,5 +1,12 @@
-import { ThemeProvider, CssBaseline, Container, Typography, Box } from '@mui/material';
+import {
+  ThemeProvider,
+  CssBaseline,
+  Container,
+  Typography,
+  Box,
+} from '@mui/material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import { theme } from './theme/theme';
 
 const queryClient = new QueryClient();

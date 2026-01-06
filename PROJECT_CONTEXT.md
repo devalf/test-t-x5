@@ -129,6 +129,7 @@ src/
 - [x] Folder structure created
 - [x] Basic theme setup (src/theme/theme.ts)
 - [x] App.tsx with QueryClientProvider + ThemeProvider
+- [x] Code style setup (ESLint, Prettier, VSCode/WebStorm settings)
 
 ### Pending
 - [ ] TypeScript models in src/models/
@@ -151,6 +152,8 @@ npm run dev        # Start dev server
 npm run build      # Build for production
 npm run test       # Run tests
 npm run lint       # Run ESLint
+npm run lint:fix   # Auto-fix ESLint issues
+npm run format     # Format code with Prettier
 ```
 
 ## Evaluation Criteria

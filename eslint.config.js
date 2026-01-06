@@ -1,29 +1,137 @@
 import js from '@eslint/js';
-import globals from 'globals';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
-import tseslint from 'typescript-eslint';
+import typescript from '@typescript-eslint/eslint-plugin';
+import typescriptParser from '@typescript-eslint/parser';
+import importPlugin from 'eslint-plugin-import';
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+export default [
   {
-    extends: [js.configs.recommended, ...tseslint.configs.strict],
-    files: ['**/*.{ts,tsx}'],
+    ignores: ['dist/**', 'node_modules/**', 'coverage/**', '.nx/**'],
+  },
+  {
+    files: ['**/*.js', '**/*.jsx'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
-    },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      sourceType: 'module',
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        Buffer: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        module: 'readonly',
+        require: 'readonly',
+        exports: 'readonly',
+        global: 'readonly',
+      },
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-      '@typescript-eslint/no-explicit-any': 'error',
+      ...js.configs.recommended.rules,
     },
-  }
-);
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: typescriptParser,
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        Buffer: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        module: 'readonly',
+        require: 'readonly',
+        exports: 'readonly',
+        global: 'readonly',
+        performance: 'readonly',
+        // Timers (available in Node and browsers)
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+        // Browser globals
+        document: 'readonly',
+        window: 'readonly',
+        navigator: 'readonly',
+        localStorage: 'readonly',
+        sessionStorage: 'readonly',
+        fetch: 'readonly',
+        URL: 'readonly',
+        URLSearchParams: 'readonly',
+        FormData: 'readonly',
+        Blob: 'readonly',
+        File: 'readonly',
+        FileReader: 'readonly',
+        AbortController: 'readonly',
+        AbortSignal: 'readonly',
+        Request: 'readonly',
+        Response: 'readonly',
+        Headers: 'readonly',
+        WebSocket: 'readonly',
+        EventSource: 'readonly',
+        CustomEvent: 'readonly',
+        Event: 'readonly',
+        HTMLElement: 'readonly',
+        Element: 'readonly',
+        Node: 'readonly',
+        NodeList: 'readonly',
+        MutationObserver: 'readonly',
+        ResizeObserver: 'readonly',
+        IntersectionObserver: 'readonly',
+        requestAnimationFrame: 'readonly',
+        cancelAnimationFrame: 'readonly',
+        matchMedia: 'readonly',
+        getComputedStyle: 'readonly',
+      },
+    },
+    plugins: {
+      '@typescript-eslint': typescript,
+      import: importPlugin,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...typescript.configs.recommended.rules,
+
+      'import/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+          pathGroups: [
+            {
+              pattern: './*.css',
+              group: 'builtin',
+              position: 'before',
+            },
+          ],
+          'newlines-between': 'always',
+          pathGroupsExcludedImportTypes: ['builtin'],
+        },
+      ],
+    },
+  },
+
+  {
+    files: [
+      '**/*.spec.ts',
+      '**/*.spec.tsx',
+      '**/*.spec.js',
+      '**/*.spec.jsx',
+      '**/*.test.ts',
+      '**/*.test.tsx',
+    ],
+    languageOptions: {
+      globals: {
+        jest: 'readonly',
+        describe: 'readonly',
+        it: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+      },
+    },
+  },
+];

@@ -12,6 +12,7 @@
 - [x] Basic theme setup
 - [x] App.tsx with providers (QueryClient, ThemeProvider)
 - [x] Package versions verification and updates
+- [x] Code style setup (ESLint, Prettier, IDE settings)
 
 ### Planned
 - [ ] TypeScript models (Order, OrderItem, Address)
@@ -59,6 +60,27 @@ User requested verification of latest compatible package versions. AI searched n
 | @testing-library/react | ^16.3.1 | Latest |
 | @testing-library/dom | ^10.4.1 | Added (required peer dep) |
 
+#### Step 3: Code Style Setup
+User provided ESLint and Prettier configurations. AI implemented the setup.
+
+**Files created/updated:**
+| File | Purpose |
+|------|---------|
+| eslint.config.js | ESLint flat config with TypeScript, import ordering, browser globals |
+| .prettierrc | Prettier config (singleQuote: true) |
+| .vscode/settings.json | VSCode format on save + ESLint fix on save |
+| .idea/prettier.xml | WebStorm Prettier auto-format on save |
+
+**Packages installed:**
+- @typescript-eslint/eslint-plugin
+- @typescript-eslint/parser
+- eslint-plugin-import
+- prettier
+
+**Scripts added:**
+- `npm run lint:fix` - Auto-fix ESLint issues
+- `npm run format` - Format src files with Prettier
+
 ---
 
 ## AI Mistakes Caught
@@ -96,11 +118,13 @@ User requested verification of latest compatible package versions. AI searched n
 | 3 | Vite + React + TS setup | ✅ Done | Config files created |
 | 4 | Package.json & versions | ✅ Done | All deps verified |
 | 5 | Folder structure | ✅ Done | All directories created |
-| 6 | TypeScript models | ⏳ Pending | Order, OrderItem, Address |
-| 7 | Mock data layer | ⏳ Pending | vite-plugin-mock-dev-server |
-| 8 | Orders Table component | ⏳ Pending | |
-| 9 | Mock WebSocket | ⏳ Pending | |
-| 10 | Order Details Modal | ⏳ Pending | |
-| 11 | Theme configuration | ⏳ Pending | |
-| 12 | Tests (3 minimum) | ⏳ Pending | |
-| 13 | Final polish | ⏳ Pending | |
+| 6 | Code style setup | ✅ Done | ESLint, Prettier, IDE settings |
+| 7 | TypeScript models | ⏳ Pending | Order, OrderItem, Address |
+| 8 | Mock data layer | ⏳ Pending | vite-plugin-mock-dev-server |
+| 9 | Orders Table component | ⏳ Pending | |
+| 10 | Mock WebSocket | ⏳ Pending | |
+| 11 | Order Details Modal | ⏳ Pending | |
+| 12 | Connection Status | ⏳ Pending | WebSocket status indicator |
+| 13 | Theme configuration | ⏳ Pending | Dark mode toggle |
+| 14 | Tests (3 minimum) | ⏳ Pending | |
+| 15 | Final polish | ⏳ Pending | |
