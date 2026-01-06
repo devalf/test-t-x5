@@ -2,7 +2,7 @@
 
 E-commerce orders management dashboard built with React + TypeScript.
 
-**Goal:** Demonstrate AI-assisted development workflow using Claude Code as the primary development tool.
+**Goal:** Demonstrate AI-assisted development workflow using Claude Code and ChatGPT as the primary development tools.
 
 ## Tech Stack
 
@@ -17,12 +17,12 @@ npm run dev
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start dev server |
+| Command         | Description          |
+| --------------- | -------------------- |
+| `npm run dev`   | Start dev server     |
 | `npm run build` | Build for production |
-| `npm run test` | Run tests |
-| `npm run lint` | Run ESLint |
+| `npm run test`  | Run tests            |
+| `npm run lint`  | Run ESLint           |
 
 ## Documentation
 

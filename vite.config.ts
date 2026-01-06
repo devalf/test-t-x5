@@ -1,17 +1,15 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { mockDevServerPlugin } from 'vite-plugin-mock-dev-server';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    mockDevServerPlugin(),
-  ],
+  plugins: [react(), mockDevServerPlugin()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -19,9 +17,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '^/api': {
-        target: '',
-      },
+      '^/api': '',
     },
   },
 });
