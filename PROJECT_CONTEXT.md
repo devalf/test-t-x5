@@ -22,6 +22,7 @@ A mini dashboard for managing and displaying e-commerce orders with real-time up
 | react-hook-form       | ^7.70.0  | Form handling                                |
 | @hookform/resolvers   | ^5.2.2   | Form validation resolvers (Zod 4 compatible) |
 | zod                   | ^4.3.5   | Schema validation                            |
+| zustand               | ^4.5.5   | State management                             |
 
 ### Dev Dependencies
 
@@ -84,12 +85,17 @@ src/
 │   ├── OrdersTable/           # Main orders table component
 │   ├── OrderDetailsModal/     # Order details modal
 │   ├── ConnectionStatus/      # WebSocket status indicator
+│   ├── SearchField/           # Standalone search input component
 │   └── ui/                    # Shared UI components
+├── pages/
+│   └── OrdersPage/            # Main orders page with search and table
 ├── features/
 │   └── orders/
 │       ├── useOrders.ts       # TanStack Query hooks
 │       ├── ordersStore.ts     # Local state (if needed)
 │       └── types.ts           # Order-related types
+├── stores/
+│   └── searchStore.ts         # Zustand state management
 ├── services/
 │   └── mockWebSocket.ts       # Mock WebSocket implementation
 ├── models/                    # [CREATED] TypeScript interfaces (Order, OrderItem, Address)

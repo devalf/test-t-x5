@@ -73,6 +73,7 @@ export default [
         CustomEvent: 'readonly',
         Event: 'readonly',
         HTMLElement: 'readonly',
+        HTMLInputElement: 'readonly',
         Element: 'readonly',
         Node: 'readonly',
         NodeList: 'readonly',

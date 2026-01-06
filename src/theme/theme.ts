@@ -16,4 +16,16 @@ export const theme = createTheme({
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
   },
+  components: {
+    MuiTableContainer: {
+      styleOverrides: {
+        root: {
+          boxShadow: '2px 4px 8px rgba(0, 0, 0, 0.1)',
+          borderRadius: 8,
+          border: '1px solid rgba(0, 0, 0, 0.12)',
+          borderTop: '2px solid rgba(0, 0, 0, 0.2)',
+        },
+      },
+    },
+  },
 });

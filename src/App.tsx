@@ -1,13 +1,8 @@
-import {
-  ThemeProvider,
-  CssBaseline,
-  Container,
-  Typography,
-  Box,
-} from '@mui/material';
+import { ThemeProvider, CssBaseline, Container, Box } from '@mui/material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { theme } from './theme/theme';
+import { OrdersPage } from './pages/OrdersPage/OrdersPage';
 
 const queryClient = new QueryClient();
 
@@ -18,12 +13,7 @@ function App() {
         <CssBaseline />
         <Container maxWidth="lg">
           <Box sx={{ my: 4 }}>
-            <Typography variant="h3" component="h1" gutterBottom>
-              Orders Dashboard
-            </Typography>
-            <Typography variant="body1">
-              Hello World - Setup Complete!
-            </Typography>
+            <OrdersPage />
           </Box>
         </Container>
       </ThemeProvider>
