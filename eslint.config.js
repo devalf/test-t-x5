@@ -84,6 +84,8 @@ export default [
         cancelAnimationFrame: 'readonly',
         matchMedia: 'readonly',
         getComputedStyle: 'readonly',
+        // Node.js globals
+        NodeJS: 'readonly',
       },
     },
     plugins: {
