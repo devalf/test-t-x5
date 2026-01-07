@@ -1,12 +1,15 @@
 import { ThemeProvider, CssBaseline, Container, Box } from '@mui/material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { theme } from './theme/theme';
-import { OrdersPage } from './pages/OrdersPage/OrdersPage';
+import { useAppTheme } from './theme/theme';
+
+import { OrdersPage } from '@/pages/OrdersPage';
 
 const queryClient = new QueryClient();
 
 function App() {
+  const theme = useAppTheme();
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
