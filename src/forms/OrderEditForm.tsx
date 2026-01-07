@@ -37,7 +37,7 @@ interface OrderEditFormProps {
 
 const getStatusColor = (
   status: OrderStatus,
-): 'success' | 'warning' | 'info' | 'error' | 'default' => {
+): 'success' | 'warning' | 'info' | 'error' | 'pending' => {
   switch (status) {
     case 'delivered':
       return 'success';
@@ -47,8 +47,9 @@ const getStatusColor = (
       return 'info';
     case 'cancelled':
       return 'error';
+    case 'pending':
     default:
-      return 'default';
+      return 'pending';
   }
 };
 

@@ -16,7 +16,11 @@ export const createMockOrder = (overrides: Partial<Order> = {}): Order => ({
   customerEmail: 'john.doe@example.com',
   status: 'pending',
   items: [
-    createMockOrderItem({ id: 'item-1', productName: 'Product A', quantity: 2 }),
+    createMockOrderItem({
+      id: 'item-1',
+      productName: 'Product A',
+      quantity: 2,
+    }),
     createMockOrderItem({
       id: 'item-2',
       productName: 'Product B',

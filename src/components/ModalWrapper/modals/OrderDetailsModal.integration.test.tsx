@@ -8,10 +8,12 @@
 import { screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { QueryClientProvider } from '@tanstack/react-query';
+import { ThemeProvider } from '@mui/material/styles';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 import { OrderDetailsModal } from './OrderDetailsModal';
 
+import { lightTheme } from '@/theme/theme';
 import type { Order, OrderStatus } from '@/models';
 // eslint-disable-next-line import/order
 import {
@@ -308,7 +310,9 @@ describe('OrderDetailsModal + OrderEditForm Integration', () => {
       const queryClient = createTestQueryClient();
       rerender(
         <QueryClientProvider client={queryClient}>
-          <OrderDetailsModal open={true} onClose={mockOnClose} />
+          <ThemeProvider theme={lightTheme}>
+            <OrderDetailsModal open={true} onClose={mockOnClose} />
+          </ThemeProvider>
         </QueryClientProvider>,
       );
 
