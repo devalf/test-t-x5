@@ -12,13 +12,18 @@ import { useState } from 'react';
 
 import { SearchField } from '@/components/SearchField';
 import { OrdersTable } from '@/components/OrdersTable/OrdersTable';
+import { ConnectionStatus } from '@/components/ConnectionStatus';
 import { ORDER_STATUSES } from '@/models';
 import { capitalize } from '@/utils';
+import { useWebSocket } from '@/hooks/useWebSocket';
 
 export const OrdersPage = () => {
   const [statusFilter, setStatusFilter] = useState<string>('');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  // Initialize WebSocket connection for real-time updates
+  useWebSocket();
 
   const handleStatusChange = (event: SelectChangeEvent<string>) => {
     const newStatus = event.target.value;
@@ -27,9 +32,17 @@ export const OrdersPage = () => {
 
   return (
     <Box>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Orders Dashboard
-      </Typography>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mb={2}
+      >
+        <Typography variant="h4" component="h1">
+          Orders Dashboard
+        </Typography>
+        <ConnectionStatus />
+      </Box>
 
       {/* Mobile Layout: Search as top block, Status filter below */}
       {isMobile ? (

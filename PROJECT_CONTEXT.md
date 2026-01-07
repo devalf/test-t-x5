@@ -55,13 +55,18 @@ A mini dashboard for managing and displaying e-commerce orders with real-time up
 - Reconnection with exponential backoff
 - Cleanup on component unmount
 
-### 3. Order Details Modal
+### 3. Connection Status
+
+- Connection status indicator (Connected / Disconnected / Reconnecting)
+- Visual feedback for WebSocket connection state
+
+### 4. Order Details Modal
 
 - Click row opens modal with full details
 - Change order status (dropdown)
 - Save changes (mock/local)
 
-### 4. Theme & Styling
+### 5. Theme & Styling
 
 - Custom MUI theme (primary, secondary colors, typography)
 - Responsive layout (desktop and tablet)
@@ -83,8 +88,8 @@ All TypeScript interfaces and types are defined in `src/models/index.ts`, includ
 src/
 ├── components/
 │   ├── OrdersTable/           # Main orders table component
-│   ├── OrderDetailsModal/     # Order details modal
 │   ├── ConnectionStatus/      # WebSocket status indicator
+│   ├── OrderDetailsModal/     # Order details modal
 │   ├── SearchField/           # Standalone search input component
 │   └── ui/                    # Shared UI components
 ├── pages/
@@ -130,8 +135,8 @@ src/
 
 - [ ] MockWebSocket service
 - [ ] OrdersTable component
-- [ ] OrderDetailsModal component
 - [ ] ConnectionStatus component
+- [ ] OrderDetailsModal component
 - [ ] Tests (minimum 3)
 
 ## API Endpoints
