@@ -22,11 +22,11 @@
 - [x] Mobile responsive layout implementation
 - [x] Mock WebSocket implementation with real-time updates
 - [x] Order Details Modal component
-
+- [x] Theme configuration (dark mode toggle)
+- 
 ### Planned
 
 - [ ] Tests (3 minimum)
-- [ ] Theme configuration (dark mode toggle)
 
 ## Session Log
 
@@ -271,6 +271,61 @@ User provided ESLint and Prettier configurations. AI implemented the setup.
 
 ---
 
+### Session 6: Theme Configuration Implementation
+
+**Date:** 2026-01-07
+
+#### Step 10: Theme Configuration with Zustand State Management
+
+- Created `src/stores/themeStore.ts` with comprehensive theme management:
+  - Zustand store with persist middleware for localStorage storage
+  - Theme modes: 'light', 'dark', 'system' (default follows OS preference)
+  - System preference detection and automatic theme switching
+  - Real-time OS theme change listener for system mode
+
+- Updated `src/theme/theme.ts` with dual theme support:
+  - Separate `lightTheme` and `darkTheme` configurations
+  - Proper MUI dark mode palette and styling
+  - `useAppTheme` hook for dynamic theme selection
+  - Responsive component styling for both themes
+
+- Created `src/components/ThemeSwitcher/ThemeSwitcher.tsx`:
+  - Theme switcher button with icon (Light/Dark/System)
+  - Dropdown menu with all three theme options
+  - Visual feedback showing current theme mode
+  - Tooltip with current theme information
+
+- Updated `src/App.tsx` for dynamic theming:
+  - Separated AppContent component to use theme hook
+  - Dynamic theme provider based on store state
+
+- Updated `src/pages/OrdersPage/OrdersPage.tsx`:
+  - Added ThemeSwitcher to header alongside ConnectionStatus
+  - Responsive layout with proper spacing
+
+**Files created/updated:**
+| File | Purpose |
+|------|---------|
+| src/stores/themeStore.ts | Zustand store with localStorage persistence and OS preference detection |
+| src/theme/theme.ts | Dual theme configuration (light/dark) with dynamic selection hook |
+| src/components/ThemeSwitcher/ThemeSwitcher.tsx | Theme switcher component with dropdown menu |
+| src/components/ThemeSwitcher/index.ts | Export barrel |
+| src/App.tsx | Dynamic theme provider integration |
+| src/pages/OrdersPage/OrdersPage.tsx | Theme switcher integration in header |
+
+**Features implemented:**
+
+- ✅ Zustand state management for theme configuration
+- ✅ localStorage persistence for theme preference
+- ✅ OS preference detection (prefers-color-scheme)
+- ✅ Real-time OS theme change updates
+- ✅ Theme switcher in app header with Light/Dark/System options
+- ✅ Proper MUI dark mode implementation
+- ✅ Default to system preference (light/dark based on OS)
+- ✅ Responsive design for theme switcher component
+
+---
+
 ## AI Mistakes Caught
 
 1. **Outdated package versions in initial package.json**
@@ -282,6 +337,10 @@ User provided ESLint and Prettier configurations. AI implemented the setup.
    - What was wrong: Multiple TypeScript errors and code issues during development
    - How did you caught it: User identified and corrected various issues in VSCode
    - How did you fix it: User made direct corrections including import paths, component props, bussines logic adjustments, code separating, and responsive styling adjustments
+
+##### X. Various kind of AI mistakes
+   - I make my work with set of AI tools and I always control and correct generated code. 
+   - All the code should be adjusted: architecture, code separation, logic flow and quality. 
 
 ---
 
@@ -306,23 +365,23 @@ _To be filled at project completion_
 
 ## Progress Tracker
 
-| Step | Description             | Status     | Notes                                            |
-| ---- | ----------------------- | ---------- | ------------------------------------------------ |
-| 1    | PROJECT_CONTEXT.md      | ✅ Done    | Context file for future sessions                 |
-| 2    | AI_WORKFLOW.md          | ✅ Done    | This file                                        |
-| 3    | Vite + React + TS setup | ✅ Done    | Config files created                             |
-| 4    | Package.json & versions | ✅ Done    | All deps verified                                |
-| 5    | Folder structure        | ✅ Done    | All directories created                          |
-| 6    | Code style setup        | ✅ Done    | ESLint, Prettier, IDE settings                   |
-| 7    | TypeScript models       | ✅ Done    | Order, OrderItem, Address in src/models/index.ts |
-| 8    | Mock data layer         | ✅ Done    | 75 orders with vite-plugin-mock-dev-server       |
-| 9    | Orders Table component  | ✅ Done    | Full functionality with mobile responsiveness    |
-| 10   | SearchField component   | ✅ Done    | Debounced search with responsive design          |
-| 11   | OrdersPage component    | ✅ Done    | Responsive dashboard layout                      |
-| 12   | Mobile responsiveness   | ✅ Done    | Mobile-first layout implementation               |
-| 13   | Mock WebSocket          | ✅ Done    | Real-time updates with connection status         |
-| 14   | Connection Status       | ✅ Done    | WebSocket status indicator                       |
-| 15   | Order Details Modal     | ✅ Done    | Full order details with status changes           |
-| 16   | Theme configuration     | ⏳ Pending | Dark mode toggle                                 |
-| 17   | Tests (3 minimum)       | ⏳ Pending |                                                  |
-| 18   | Final polish            | ⏳ Pending |                                                  |
+| Step | Description             | Status     | Notes                                                                                                 |
+| ---- | ----------------------- | ---------- | ----------------------------------------------------------------------------------------------------- |
+| 1    | PROJECT_CONTEXT.md      | ✅ Done    | Context file for future sessions                                                                      |
+| 2    | AI_WORKFLOW.md          | ✅ Done    | This file                                                                                             |
+| 3    | Vite + React + TS setup | ✅ Done    | Config files created                                                                                  |
+| 4    | Package.json & versions | ✅ Done    | All deps verified                                                                                     |
+| 5    | Folder structure        | ✅ Done    | All directories created                                                                               |
+| 6    | Code style setup        | ✅ Done    | ESLint, Prettier, IDE settings                                                                        |
+| 7    | TypeScript models       | ✅ Done    | Order, OrderItem, Address in src/models/index.ts                                                      |
+| 8    | Mock data layer         | ✅ Done    | 75 orders with vite-plugin-mock-dev-server                                                            |
+| 9    | Orders Table component  | ✅ Done    | Full functionality with mobile responsiveness                                                         |
+| 10   | SearchField component   | ✅ Done    | Debounced search with responsive design                                                               |
+| 11   | OrdersPage component    | ✅ Done    | Responsive dashboard layout                                                                           |
+| 12   | Mobile responsiveness   | ✅ Done    | Mobile-first layout implementation                                                                    |
+| 13   | Mock WebSocket          | ✅ Done    | Real-time updates with connection status                                                              |
+| 14   | Connection Status       | ✅ Done    | WebSocket status indicator                                                                            |
+| 15   | Order Details Modal     | ✅ Done    | Full order details with status changes                                                                |
+| 16   | Theme configuration     | ✅ Done    | Dark mode toggle with Zustand state management, localStorage persistence, and OS preference detection |
+| 17   | Tests (3 minimum)       | ⏳ Pending |                                                                                                       |
+| 18   | Final polish            | ⏳ Pending |                                                                                                       |

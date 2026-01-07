@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { SearchField } from '@/components/SearchField';
 import { OrdersTable } from '@/components/OrdersTable/OrdersTable';
 import { ConnectionStatus } from '@/components/ConnectionStatus';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 import { ModalWrapper } from '@/components/ModalWrapper';
 import { ORDER_STATUSES } from '@/models';
 import { capitalize } from '@/utils';
@@ -51,7 +52,10 @@ export const OrdersPage = () => {
         <Typography variant="h4" component="h1">
           Orders Dashboard
         </Typography>
-        <ConnectionStatus />
+        <Box display="flex" alignItems="center" gap={1}>
+          <ThemeSwitcher />
+          <ConnectionStatus />
+        </Box>
       </Box>
 
       {/* Mobile Layout: Search as top block, Status filter below */}
