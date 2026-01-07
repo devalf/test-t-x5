@@ -1,6 +1,7 @@
+import { OrderDetailsModal } from './modals/OrderDetailsModal';
+
 import { useModalStore } from '@/stores/modalStore';
 import { MODAL_TYPES } from '@/constants/modals';
-import { OrderDetailsModal } from '@/components/OrderDetailsModal';
 
 export const ModalWrapper = () => {
   const { currentModal, closeModal, isOpen } = useModalStore();

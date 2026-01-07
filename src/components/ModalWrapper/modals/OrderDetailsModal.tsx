@@ -6,7 +6,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 
-import { useOrderActions, useOrder } from '@/features/orders';
+import { useUpdateOrderStatus, useOrder } from '@/features/orders';
 import { useModalStore } from '@/stores/modalStore';
 import { OrderEditForm, OrderEditFormData } from '@/forms';
 
@@ -26,7 +26,7 @@ export const OrderDetailsModal = ({
   const { payload } = useModalStore();
 
   // Order hooks - handle own data fetching
-  const { updateOrderStatus } = useOrderActions();
+  const updateOrderStatus = useUpdateOrderStatus();
   const orderId = payload?.orderId as string | undefined;
   const { data: order } = useOrder(orderId || '');
 
