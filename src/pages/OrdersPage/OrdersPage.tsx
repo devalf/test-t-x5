@@ -6,16 +6,18 @@ import {
   MenuItem,
   useTheme,
   useMediaQuery,
+  SelectChangeEvent,
 } from '@mui/material';
-import { SelectChangeEvent } from '@mui/material';
 import { useState } from 'react';
 
 import { SearchField } from '@/components/SearchField';
 import { OrdersTable } from '@/components/OrdersTable/OrdersTable';
 import { ConnectionStatus } from '@/components/ConnectionStatus';
+import { ModalWrapper } from '@/components/ModalWrapper';
 import { ORDER_STATUSES } from '@/models';
 import { capitalize } from '@/utils';
 import { useWebSocket } from '@/hooks/useWebSocket';
+import { useModal } from '@/utils/modal';
 
 export const OrdersPage = () => {
   const [statusFilter, setStatusFilter] = useState<string>('');
@@ -25,9 +27,17 @@ export const OrdersPage = () => {
   // Initialize WebSocket connection for real-time updates
   useWebSocket();
 
+  // Modal store hooks
+  const { openOrderDetails } = useModal();
+
   const handleStatusChange = (event: SelectChangeEvent<string>) => {
     const newStatus = event.target.value;
     setStatusFilter(newStatus);
+  };
+
+  const handleRowClick = (orderId: string) => {
+    // Open the order details modal with the order ID as payload
+    openOrderDetails(orderId);
   };
 
   return (
@@ -105,7 +115,9 @@ export const OrdersPage = () => {
         </Box>
       )}
 
-      <OrdersTable statusFilter={statusFilter} />
+      <OrdersTable statusFilter={statusFilter} onRowClick={handleRowClick} />
+
+      <ModalWrapper />
     </Box>
   );
 };

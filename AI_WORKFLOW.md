@@ -21,11 +21,10 @@
 - [x] Orders Table component with full functionality
 - [x] Mobile responsive layout implementation
 - [x] Mock WebSocket implementation with real-time updates
+- [x] Order Details Modal component
 
 ### Planned
 
-- [ ] Connection Status component
-- [ ] Order Details Modal component
 - [ ] Tests (3 minimum)
 - [ ] Theme configuration (dark mode toggle)
 
@@ -230,6 +229,48 @@ User provided ESLint and Prettier configurations. AI implemented the setup.
 
 ---
 
+### Session 5: Order Details Modal Implementation
+
+**Date:** 2026-01-07
+
+#### Step 9: Order Details Modal Component Implementation
+
+- Created `src/components/OrderDetailsModal/OrderDetailsModal.tsx` with comprehensive functionality:
+  - Full order details display with customer information, shipping address, and order summary
+  - Order items table with quantity, price, and total calculations
+  - Status change functionality with dropdown selector
+  - Responsive design with mobile-optimized layout (full screen on mobile)
+  - Color-coded status chips and proper MUI styling
+  - Integration with mock API for status updates
+
+- Updated `src/pages/OrdersPage/OrdersPage.tsx`:
+  - Added state management for modal visibility and selected order
+  - Implemented TanStack Query mutation for order status updates
+  - Added order fetching logic (cache-first with fallback to API)
+  - Integrated modal with row click functionality
+  - Proper cleanup and error handling
+
+- Created `src/components/OrderDetailsModal/index.ts` export barrel
+
+**Files created/updated:**
+| File | Purpose |
+|------|---------|
+| src/components/OrderDetailsModal/OrderDetailsModal.tsx | Main modal component with full order details |
+| src/components/OrderDetailsModal/index.ts | Export barrel |
+| src/pages/OrdersPage/OrdersPage.tsx | Modal integration and state management |
+
+**Features implemented:**
+
+- ✅ Click any table row to open detailed order view
+- ✅ Complete order information display (customer, shipping, items, totals)
+- ✅ Status change dropdown with all order statuses
+- ✅ Real-time status updates via TanStack Query mutation
+- ✅ Mobile-responsive design (full-screen modal on mobile)
+- ✅ Proper TypeScript typing throughout
+- ✅ Integration with existing mock API endpoints
+
+---
+
 ## AI Mistakes Caught
 
 1. **Outdated package versions in initial package.json**
@@ -281,7 +322,7 @@ _To be filled at project completion_
 | 12   | Mobile responsiveness   | ✅ Done    | Mobile-first layout implementation               |
 | 13   | Mock WebSocket          | ✅ Done    | Real-time updates with connection status         |
 | 14   | Connection Status       | ✅ Done    | WebSocket status indicator                       |
-| 15   | Order Details Modal     | ⏳ Pending |                                                  |
+| 15   | Order Details Modal     | ✅ Done    | Full order details with status changes           |
 | 16   | Theme configuration     | ⏳ Pending | Dark mode toggle                                 |
 | 17   | Tests (3 minimum)       | ⏳ Pending |                                                  |
 | 18   | Final polish            | ⏳ Pending |                                                  |

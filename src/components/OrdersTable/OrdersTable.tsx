@@ -21,7 +21,7 @@ import {
 import { useState, ChangeEvent, useEffect } from 'react';
 import { SelectChangeEvent } from '@mui/material';
 
-import { useOrders } from '@/features/orders/useOrders';
+import { useOrders } from '@/features/orders';
 import { useSearchStore } from '@/stores/searchStore';
 import { formatDate, formatCurrency, capitalize } from '@/utils';
 

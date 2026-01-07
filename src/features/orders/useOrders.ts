@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
+import { ORDERS_QUERY_KEY } from './queryKeys';
+
 import type { Order } from '@/models';
 
 export interface OrdersResponse {
@@ -32,7 +34,15 @@ export const useOrders = (options: UseOrdersOptions = {}) => {
   } = options;
 
   return useQuery<OrdersResponse>({
-    queryKey: ['orders', page, pageSize, sortBy, sortOrder, status, search],
+    queryKey: [
+      ORDERS_QUERY_KEY,
+      page,
+      pageSize,
+      sortBy,
+      sortOrder,
+      status,
+      search,
+    ],
     queryFn: async () => {
       const params = new URLSearchParams({
         page: page.toString(),
