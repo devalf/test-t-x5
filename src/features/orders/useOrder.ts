@@ -51,11 +51,3 @@ export const useUpdateOrderStatus = () => {
     },
   });
 };
-
-export const useOrderActions = () => {
-  const updateOrderStatus = useUpdateOrderStatus();
-
-  return {
-    updateOrderStatus,
-  };
-};
