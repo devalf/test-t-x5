@@ -27,17 +27,18 @@ import { formatDate, formatCurrency, capitalize } from '@/utils';
 
 const getStatusBgColor = (status: string): string => {
   const statusColorMap: Record<string, string> = {
+    pending: 'pending.light',
     delivered: 'success.light',
     shipped: 'info.light',
     processing: 'warning.light',
     cancelled: 'error.light',
   };
 
-  return statusColorMap[status] ?? 'grey.200';
+  return statusColorMap[status] ?? 'pending.light';
 };
 
 const getStatusTextColor = (status: string): string => {
-  return status === 'cancelled' ? 'error.dark' : 'text.primary';
+  return status === 'cancelled' ? 'error.contrastText' : 'text.primary';
 };
 
 interface OrdersTableProps {

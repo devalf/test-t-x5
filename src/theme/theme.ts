@@ -2,6 +2,23 @@ import { createTheme } from '@mui/material/styles';
 
 import { useThemeStore } from '../stores/themeStore';
 
+// Extend MUI palette with custom status colors
+declare module '@mui/material/styles' {
+  interface Palette {
+    pending: Palette['primary'];
+  }
+  interface PaletteOptions {
+    pending?: PaletteOptions['primary'];
+  }
+}
+
+// Extend Chip color prop to support custom colors
+declare module '@mui/material/Chip' {
+  interface ChipPropsColorOverrides {
+    pending: true;
+  }
+}
+
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
@@ -18,6 +35,12 @@ export const lightTheme = createTheme({
     background: {
       default: '#fafafa',
       paper: '#ffffff',
+    },
+    pending: {
+      main: '#9e9e9e',
+      light: '#e0e0e0',
+      dark: '#616161',
+      contrastText: '#424242',
     },
   },
   typography: {
@@ -53,6 +76,12 @@ export const darkTheme = createTheme({
     background: {
       default: '#121212',
       paper: '#1e1e1e',
+    },
+    pending: {
+      main: '#8d8d72',
+      light: '#a9a98a',
+      dark: '#6b6b56',
+      contrastText: '#ffffff',
     },
   },
   typography: {
